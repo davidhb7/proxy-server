@@ -5,10 +5,15 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// Proxy endpoint
+// Ruta raíz para evitar error 404 al ingresar directamente
+app.get('/', (req, res) => {
+  res.send('Servidor proxy activo 🚀');
+});
+
+// Proxy para GET (consulta)
 app.get('/proxy', async (req, res) => {
   const { cedula } = req.query;
   try {
@@ -20,8 +25,8 @@ app.get('/proxy', async (req, res) => {
     });
     res.json(response.data);
   } catch (error) {
-    console.error('Error en el proxy:', error.message);
-    res.status(500).json({ error: 'Error desde el proxy' });
+    console.error('Error en el proxy GET:', error.message);
+    res.status(500).json({ error: 'Error desde el proxy en GET', detalle: error.message });
   }
 });
 
@@ -36,7 +41,7 @@ app.post('/proxy', async (req, res) => {
     res.json(response.data);
   } catch (error) {
     console.error('Error en el proxy POST:', error.message);
-    res.status(500).json({ error: 'Error en el POST desde el proxy' });
+    res.status(500).json({ error: 'Error desde el proxy en POST', detalle: error.message });
   }
 });
 
