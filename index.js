@@ -17,7 +17,7 @@ app.use(express.json());
 app.get('/proxy', async (req, res) => {
   const { cedula } = req.query;
   try {
-    const response = await axios.get('https://botai.smartdataautomation.com/api_backend_ai/dinamic-db/report/119/assesmentDEV?cedula=', {
+    const response = await axios.get('https://botai.smartdataautomation.com/api_backend_ai/dinamic-db/report/119/assesmentDEV', {
       headers: {
         Authorization: 'Token 790cfdfb568c8ca697c72f52d8fab5af63ede025'
       },
