@@ -5,7 +5,7 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({ origin: 'https://eficaciavalidator.web.app/' }));
+app.use(cors({ origin: 'https://eficaciavalidator.web.app' }));
 app.use(express.json());
 
 // Ruta raíz para evitar error 404 al ingresar directamente
