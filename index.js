@@ -14,7 +14,7 @@ app.use(express.json());
 // });
 
 // Proxy para GET (consulta)
-app.get('/proxy', async (req, res) => {
+app.get('proxy', async (req, res) => {
   const { cedula } = req.query;
   try {
     const response = await axios.get('https://botai.smartdataautomation.com/api_backend_ai/dinamic-db/report/119/assesmentDEV', {
