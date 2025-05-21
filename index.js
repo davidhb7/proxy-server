@@ -9,9 +9,9 @@ app.use(cors({ origin: 'https://eficaciavalidator.web.app' }));
 app.use(express.json());
 
 // Ruta raíz para evitar error 404 al ingresar directamente
-app.get('/', (req, res) => {
-  res.send('Servidor proxy activo 🚀');
-});
+// app.get('/', (req, res) => {
+//   res.send('Servidor proxy activo 🚀');
+// });
 
 // Proxy para GET (consulta)
 app.get('/proxy', async (req, res) => {
